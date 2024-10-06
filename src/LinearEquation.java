@@ -59,7 +59,7 @@ public class LinearEquation {
 
         a = ((double) this.y1-this.y2)/((double) this.x1-this.x2);
 
-        if ()
+
 
 //        if (b1 <0  && b2 < 0 && b1 != b2) {
 //            b2 = b2*-1;
