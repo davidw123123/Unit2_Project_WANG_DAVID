@@ -20,7 +20,7 @@ public class EquationRunner {
 
         LinearEquation result = new LinearEquation(coordinate.x1(), coordinate.y1(),coordinate.x2(), coordinate.y2());
 
-        System.out.println(result.toString());
+        System.out.println(result);
     }
 
 }
