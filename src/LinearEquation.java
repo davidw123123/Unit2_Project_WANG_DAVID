@@ -27,6 +27,7 @@ public class LinearEquation {
     distanceAndSlope();
     yIntercept();
     slopeInterceptForm();
+
     }
 
     public LinearEquation() {
@@ -95,7 +96,7 @@ public class LinearEquation {
 
     public void slopeInterceptForm(){
         if (yInt < 0){
-            slopeIntForm = "y = " + m + "x " + Math.round(yInt *100.00)/100.00;
+            slopeIntForm = "y = " + m + "x " + "- " + (Math.round(yInt *100.00)/100.00) * -1;
         } else {
             slopeIntForm = "y = "+ m + "x + " + Math.round(yInt *100.00)/100.00;
         }
@@ -117,7 +118,7 @@ public class LinearEquation {
     public void solver (double input){
         double x = input;
          this.solvedY = a * input + yInt;
-        System.out.println("Solved coordinate point is: (" + x + "," + this.solvedY + ")");
+        System.out.println("Solved coordinate point is: (" + x + "," + Math.round(this.solvedY *100.00)/100.00 + ")");
     }
 
     public String toString(){
