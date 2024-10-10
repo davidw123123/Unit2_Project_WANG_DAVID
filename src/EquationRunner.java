@@ -20,7 +20,11 @@ public class EquationRunner {
 
         LinearEquation result = new LinearEquation(coordinate.x1(), coordinate.y1(),coordinate.x2(), coordinate.y2());
 
+        //asks the user for an x value and prints the corresponding points
         System.out.println(result);
+        System.out.print("Enter a third x-value: ");
+        double thirdCoordinate = s.nextDouble();
+        coordinate.solver(thirdCoordinate);
     }
 
 }

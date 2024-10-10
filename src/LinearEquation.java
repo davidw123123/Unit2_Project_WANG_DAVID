@@ -16,6 +16,8 @@ public class LinearEquation {
     private String c;
     private double b1;
     private double c1;
+    private double x;
+    private double solvedY;
 
     public LinearEquation(int x1, int y1, int x2, int y2){
     this.x1 = x1;
@@ -24,6 +26,7 @@ public class LinearEquation {
     this.y2 = y2;
     distanceAndSlope();
     yIntercept();
+    slopeInterceptForm();
     }
 
     public LinearEquation() {
@@ -77,36 +80,6 @@ public class LinearEquation {
 
         }
 
-
-//        if (b1 <0  && b2 < 0 && b1 != b2) {
-//            b2 = b2*-1;
-//            b1 = b1 *-1;
-//            c = String.valueOf(b2);
-//            b = String.valueOf(b1);
-//            this.m = b + "/"+c;
-//        }else {
-//            if (b2 < 0 & b1 != b2) {
-//                b1 = b1 * -1;
-//                b2 = b2 * -1;
-//                c = String.valueOf(b2);
-//                b = String.valueOf(b1);
-//                this.m = b + "/" + c;
-//                if ((Math.abs(b1) / b2) % 1 == 0) {
-//                    this.m = String.valueOf(b1 / b2);
-//                } else {
-//                    if (b1 == b2) {
-//                        this.m = "1";
-//                    } else {
-//                if ( (Math.abs(b1)/b2) % 1 == 0 ){
-//                    this.m = "-"+String.valueOf(b1/b2);
-//                }
-//
-//                    }
-//                }
-//            }
-//        }
-
-
     }
 
     public void yIntercept(){
@@ -122,9 +95,9 @@ public class LinearEquation {
 
     public void slopeInterceptForm(){
         if (yInt < 0){
-            slopeIntForm = "y = " + m + "x " + yInt;
+            slopeIntForm = "y = " + m + "x " + Math.round(yInt *100.00)/100.00;
         } else {
-            slopeIntForm = "y = "+ m + "x + " + yInt;
+            slopeIntForm = "y = "+ m + "x + " + Math.round(yInt *100.00)/100.00;
         }
     }
 
@@ -141,14 +114,19 @@ public class LinearEquation {
         return y2;
     }
 
+    public void solver (double input){
+        double x = input;
+         this.solvedY = a * input + yInt;
+        System.out.println("Solved coordinate point is: (" + x + "," + this.solvedY + ")");
+    }
+
     public String toString(){
        String str = "\n"+"First Pair: (" +this.x1+","+this.y1+")"+"\n"+
                     "Second Pair: ("+this.x2+","+this.y2+ ")"+"\n"+
                     "The Slope is: "+this.m+"\n"+
-                    "The Y intercept is: " + yInt + "\n" +
+                    "The Y intercept is: " + Math.round(yInt *100.00)/100.00 + "\n" +
                     "Slope intercept form: " + slopeIntForm + "\n" +
-                    "The distance between these 2 points is: "+ distance + "\n"+
-                    "Solved coordinate point is: ";
+                    "The distance between these 2 points is: "+ distance + "\n";
        return str;
     }
 }
