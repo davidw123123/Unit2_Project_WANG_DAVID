@@ -1,0 +1,66 @@
+LinearEquation class
+
+Instance Variables:
+    private int x1 - This variable represents the x value of the first coordinate pair
+    private int y1 - this variable represents the y value of the first coordinate pair
+    private int x2 - this variable represents the x value of the second coordinate pair
+    private int y2 - this variable represents the y value of the second coordinate pair
+    private String m - this variable represents the slope of the 2 points
+    private double yInt - this variable represents the y intercept of the 2 points
+    private String slopeIntForm - this variable represents the slope intercept form of the 2 coordinates points
+    private double distance - this variable represents the distance between the 2 points
+    private double solvedY - this variable represents the y coordinate for the x value they input at the end
+Constructor
+	public LinearEquation(int x1, int y1, int x2, int y2)
+    initializes each variable into the input inputted into the constructor
+
+    public LinearEquation()
+    empty object creator
+Methods
+
+    public void x1y1 (String input)
+    this method substrings the coordinate typed and stores the values into the variables
+
+	public void x2y2 (String input){
+    this method substrings the coordinate typed and stores the values into the variables
+
+	public void distanceAndSlope()
+    calculates the distance and slope
+
+	public void yIntercept()
+    calculates the y intercept
+
+	public void slopeInterceptForm()
+    formats the variables into slope intercept form
+
+	public int x1()
+    returns value of x1
+
+	public int y1()
+    returns value of y1
+
+    public int x2()
+    returns value of x2
+
+    public int y2()
+    returns value of y2
+
+    public void solver (double input)
+    solves for the y coordinate given the x coordinate inputted into the parameter
+
+    public String toString()
+    Step 1: This method will display all relevant information about this instance including:
+            X and Y coordinate information of first pair and second pair
+            Slope Intercept Form equation
+            The Slope
+            Distance between 2 points
+EquationRunner.java
+Step 1: Create a new object
+Step 2: Ask user to enter first coordinate point
+Step 3: use the x1y1 method
+Step 4: Ask user to enter second coordinate point
+Step 5: use the x2y2 method
+Step 6: create new object class with the constructor with parameters
+Step 7: Print out the result using toString method
+Step 8: Ask the user to enter third coordinate point
+Step 9: Use the solver method and input the user's input into the parameter

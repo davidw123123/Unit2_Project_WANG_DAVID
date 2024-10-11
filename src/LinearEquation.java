@@ -1,24 +1,18 @@
 public class LinearEquation {
 
-
+// variables needed for class
     private int x1;
     private int y1;
     private int x2;
     private int y2;
-    private String m;
+    private String m; // slope in string format
     private double yInt;
     private String slopeIntForm;
-    private int index;
     private double distance;
-    private double temp;
-    private double a;
-    private String b;
-    private String c;
-    private double b1;
-    private double c1;
-    private double x;
-    private double solvedY;
+    private double a; // slope in double format
 
+
+//constructor to initialize coordinates and call methods
     public LinearEquation(int x1, int y1, int x2, int y2){
     this.x1 = x1;
     this.y1 = y1;
@@ -30,19 +24,19 @@ public class LinearEquation {
 
     }
 
-    public LinearEquation() {
+    public LinearEquation() { // default constructor
     }
 
     public void x1y1 (String input){
-    int length = input.length()-1;
-    String a = input.substring(1, length);
-    int index = input.indexOf(",") -1;
-    this.x1 = Integer.parseInt(a.substring(0, index));
+    int length = input.length()-1; // sets length of input to length minus one
+    String a = input.substring(1, length); //substrings index one to length
+    int index = input.indexOf(",") -1; // sets index to index of comma minus one
+    this.x1 = Integer.parseInt(a.substring(0, index)); // substrings from index of 0 to index variable
     String c = a.substring(input.indexOf(","));
     this.y1 = Integer.parseInt(c);
     }
 
-    public void x2y2 (String input){
+    public void x2y2 (String input){ // same thing as above
     int length = input.length()-1;
     String b = input.substring(1, length);
     int index = input.indexOf(",") -1;
@@ -53,6 +47,10 @@ public class LinearEquation {
 
     // to calculate the distance and slopeIntForm
     public void distanceAndSlope(){
+    String b;
+    String c;
+    double b1;
+    double c1;
     distance = Double.parseDouble(String.format("%.2f",(Math.sqrt(Math.pow((this.x1 - this.x2),2)+Math.pow((this.y1 -this.y2), 2)))));
     b =String.valueOf((double) this.y1-this.y2);
     b1 = ((double) this.y1-this.y2);
@@ -84,9 +82,10 @@ public class LinearEquation {
     }
 
     public void yIntercept(){
-        this.temp = ((double) this.x1* a);
+        double temp; // temporary value for value of slope times first x coordinate
+        temp = ((double) this.x1* a);
         if (temp < 0) {
-            yInt = this.y1 + Math.abs(this.temp);
+            yInt = this.y1 + Math.abs(temp); // if temp is less than 0 then set y intercept to absolute value of temp
         } else {
             yInt = this.y1 - temp;
             yInt = Math.round(yInt * 100.0)/100.0;
@@ -94,31 +93,32 @@ public class LinearEquation {
 
     }
 
-    public void slopeInterceptForm(){
+    public void slopeInterceptForm(){ // returns the slope intercept form of equation
         if (yInt < 0){
-            slopeIntForm = "y = " + m + "x " + "- " + (Math.round(yInt *100.00)/100.00) * -1;
+            slopeIntForm = "y = " + m + "x " + "- " + (Math.round(yInt *100.00)/100.00) * -1; // if the value is negative, remove the negative sign and add a subtraction sign before it
         } else {
             slopeIntForm = "y = "+ m + "x + " + Math.round(yInt *100.00)/100.00;
         }
     }
 
     public int x1(){
-        return x1;
+        return x1; //returns value of x1
     }
     public int y1(){
-        return y1;
+        return y1; //returns value of y1
     }
     public int x2(){
-        return x2;
+        return x2; //returns value of x2
     }
     public int y2(){
-        return y2;
+        return y2; //returns value of y2
     }
 
     public void solver (double input){
         double x = input;
-         this.solvedY = a * input + yInt;
-        System.out.println("Solved coordinate point is: (" + x + "," + Math.round(this.solvedY *100.00)/100.00 + ")");
+        double solvedY;
+         solvedY = a * input + yInt;
+        System.out.println("Solved coordinate point is: (" + x + "," + Math.round(solvedY *100.00)/100.00 + ")");
     }
 
     public String toString(){
