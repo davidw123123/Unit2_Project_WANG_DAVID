@@ -1,14 +1,14 @@
 public class LinearEquation {
 
 // variables needed for class
-    private int x1;
-    private int y1;
-    private int x2;
-    private int y2;
+    private int x1; //x coordinate of first pair
+    private int y1; //y coordinate for first pair
+    private int x2; //x coordinate for second pair
+    private int y2; // y coordinate for second pair
     private String m; // slope in string format
-    private double yInt;
-    private String slopeIntForm;
-    private double distance;
+    private double yInt; //y intercept of the two points
+    private String slopeIntForm; // the equation in slope intercept form
+    private double distance; //distance between 2 points
     private double a; // slope in double format
 
 
@@ -18,9 +18,9 @@ public class LinearEquation {
     this.y1 = y1;
     this.x2 = x2;
     this.y2 = y2;
-    distanceAndSlope();
-    yIntercept();
-    slopeInterceptForm();
+    distanceAndSlope(); //calculates distance and slope
+    yIntercept(); //calculates y intercept
+    slopeInterceptForm(); // formats into slope intercept form
 
     }
 
@@ -29,11 +29,11 @@ public class LinearEquation {
 
     public void x1y1 (String input){
     int length = input.length()-1; // sets length of input to length minus one
-    String a = input.substring(1, length); //substrings index one to length
+    String coordinatesWithoutParenthesis = input.substring(1, length); //substrings index one to length to remove parenthesis
     int index = input.indexOf(",") -1; // sets index to index of comma minus one
-    this.x1 = Integer.parseInt(a.substring(0, index)); // substrings from index of 0 to index variable
-    String c = a.substring(input.indexOf(","));
-    this.y1 = Integer.parseInt(c);
+    this.x1 = Integer.parseInt(coordinatesWithoutParenthesis.substring(0, index)); // substrings from index of 0 to index variable and sets x1 to the value
+    String yCoordinate = coordinatesWithoutParenthesis.substring(input.indexOf(",")); //substrings from comma to the end for y coordinate
+    this.y1 = Integer.parseInt(yCoordinate); //converts the string into integer and sets y1 to the assigned value
     }
 
     public void x2y2 (String input){ // same thing as above
@@ -47,37 +47,37 @@ public class LinearEquation {
 
     // to calculate the distance and slopeIntForm
     public void distanceAndSlope(){
-    String b;
-    String c;
-    double b1;
-    double c1;
-    distance = Double.parseDouble(String.format("%.2f",(Math.sqrt(Math.pow((this.x1 - this.x2),2)+Math.pow((this.y1 -this.y2), 2)))));
-    b =String.valueOf((double) this.y1-this.y2);
-    b1 = ((double) this.y1-this.y2);
-        c = String.valueOf((double) this.x1-this.x2);
-        c1 = ((double) this.x1-this.x2);
+    String tempStringDeltaY;
+    String tempStringDeltaX;
+    double tempDeltaY;
+    double tempDeltaX;
 
-        this.m = b + "/"+c;
+    distance = Double.parseDouble(String.format("%.2f",(Math.sqrt(Math.pow((this.x1 - this.x2),2)+Math.pow((this.y1 -this.y2), 2))))); //calculates the distance using distance formula
 
-        a = ((double) this.y1-this.y2)/((double) this.x1-this.x2);
+    tempStringDeltaY =String.valueOf((double) this.y1-this.y2);
+    tempDeltaY = ((double) this.y1-this.y2);
+    tempStringDeltaX = String.valueOf((double) this.x1-this.x2);
+    tempDeltaX = ((double) this.x1-this.x2);
 
-        if (b1/c1 % 1 == 0){ // if the values of delta y and delta x are equal, it will set slopeIntForm to 1
+    this.m = tempStringDeltaY + "/"+ tempStringDeltaX;
 
-        this.m = String.valueOf(b1/c1);
+    a = ((double) this.y1-this.y2)/((double) this.x1-this.x2);
 
-        } else if (b1 <0  && c1 < 0 && b1 != c1) { // if delta x and delta y are both negatives and not equal to each other, it'll set both of them positive
+    if (tempDeltaY / tempDeltaX % 1 == 0){ // if the values of delta y and delta x are equal, it will set slopeIntForm to 1
+    this.m = String.valueOf(tempDeltaY / tempDeltaX);
+    } else if (tempDeltaY <0  && tempDeltaX < 0 && tempDeltaY != tempDeltaX) { // if delta x and delta y are both negatives and not equal to each other, it'll set both of them positive
 
-        c1 = c1 * -1;
-        b1 = b1 * -1;
-        this.m = (int) b1+"/"+(int) c1;
+    tempDeltaX = tempDeltaX * -1;
+    tempDeltaY = tempDeltaY * -1;
+    this.m = (int) tempDeltaY +"/"+(int) tempDeltaX;
 
-        } else if (b1>0 && c1<0 ){ // if delta y is positive and delta x is negative, it'll move the negative sign to the left
-
-        b1 = b1 * -1;
-        c1 = c1 * -1;
-        this.m = (int) b1+"/"+(int) c1;
-
-        }
+    } else if (tempDeltaY >0 && tempDeltaX <0 )
+    {
+    // if delta y is positive and delta x is negative, it'll move the negative sign to the left
+    tempDeltaY = tempDeltaY * -1;
+    tempDeltaX = tempDeltaX * -1;
+    this.m = (int) tempDeltaY +"/"+(int) tempDeltaX;
+    }
 
     }
 
@@ -114,11 +114,11 @@ public class LinearEquation {
         return y2; //returns value of y2
     }
 
-    public void solver (double input){
+    public String solver (double input){ // solves for Y value given x value
         double x = input;
         double solvedY;
          solvedY = a * input + yInt;
-        System.out.println("Solved coordinate point is: (" + x + "," + Math.round(solvedY *100.00)/100.00 + ")");
+       return "Solved coordinate point is: (" + x + "," + Math.round(solvedY *100.00)/100.00 + ")"; //returns coordinate pair of x and solved y value
     }
 
     public String toString(){

@@ -21,7 +21,7 @@ public class EquationRunner {
         System.out.println(result);
         System.out.print("Enter a third x-value: ");
         double thirdCoordinate = s.nextDouble();
-        result.solver(thirdCoordinate);
+        System.out.println(result.solver(thirdCoordinate));
     }
 
 }
